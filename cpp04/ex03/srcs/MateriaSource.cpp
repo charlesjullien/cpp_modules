@@ -72,7 +72,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 
 MateriaSource::~MateriaSource()
 {
-	int i = 4;
+	int i = 0;
 
 	while (i < 4)
 	{

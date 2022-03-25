@@ -98,7 +98,7 @@ void Character::use(int idx, ICharacter& target)
 
 Character::~Character()
 {
-	int i = 4;
+	int i = 0;
 
 	while (i < 4)
 	{
