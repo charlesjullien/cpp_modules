@@ -1,17 +1,17 @@
 #include "../includes/Form.hpp"
 
-Form::Form() : _name("Unknown"), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false)
+Form::Form() : _name("Unknown"), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false), _target("Unnamed target")
 {
 
 }
 
-Form::Form(const std::string name) : _name(name), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false)
+Form::Form(const std::string name) : _name(name), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false), _target("Unnamed target")
 {
 	
 }
 
 Form::Form(int grade_required_to_sign, int grade_required_to_execute) : _name("Unknown"),
-_grade_required_to_execute(grade_required_to_execute), _grade_required_to_sign(grade_required_to_sign), _is_signed(false)
+_grade_required_to_execute(grade_required_to_execute), _grade_required_to_sign(grade_required_to_sign), _is_signed(false), _target("Unnamed target")
 {
 	if (grade_required_to_sign > 150 || grade_required_to_execute > 150)
 	{
@@ -24,7 +24,7 @@ _grade_required_to_execute(grade_required_to_execute), _grade_required_to_sign(g
 }
 
 Form::Form(const std::string name, int grade_required_to_sign, int grade_required_to_execute) : _name(name),
-_grade_required_to_execute(grade_required_to_execute), _grade_required_to_sign(grade_required_to_sign), _is_signed(false)
+_grade_required_to_execute(grade_required_to_execute), _grade_required_to_sign(grade_required_to_sign), _is_signed(false), _target("Unnamed target")
 {
 	if (grade_required_to_sign > 150 || grade_required_to_execute > 150)
 	{
@@ -50,7 +50,7 @@ _name(name), _grade_required_to_execute(grade_required_to_execute), _grade_requi
 }
 
 Form::Form(const Form &other) : _name(other.getName()), _grade_required_to_execute(other.get_grade_required_to_execute()),
-_grade_required_to_sign(other.get_grade_required_to_sign()), _is_signed(false)
+_grade_required_to_sign(other.get_grade_required_to_sign()), _is_signed(false), , _target(get_target())
 {
 	*this = other;
 }
@@ -81,6 +81,11 @@ int Form::get_grade_required_to_execute() const
 	return (_grade_required_to_execute);
 }
 
+int Form::get_target() const
+{
+	return (_target);
+}
+
 void Form::BeSigned(Bureaucrat &b)
 {
 	if (_is_signed)
@@ -97,7 +102,7 @@ void Form::BeSigned(Bureaucrat &b)
 
 std::ostream& operator<<(std::ostream& os, const Form &a)
 {
-    os << "name = " << a.getName() << "\nSigned state = " << a.get_is_signed() << "\nGrade required to sign = "<< a.get_grade_required_to_sign() << "\nGrade required to execute = "<< a.get_grade_required_to_execute() << std::endl;
+    os << "name = " << a.getName() << "\nSigned state = " << a.get_is_signed() << "\nGrade required to sign = "<< a.get_grade_required_to_sign() << "\nGrade required to execute = "<< a.get_grade_required_to_execute() << "\nTarget = " << a.get_target() std::endl;
     return (os);
 }
 
@@ -119,6 +124,19 @@ Form::GradeTooLowException::GradeTooLowException(const char *error) : _error(err
 const char* Form::GradeTooLowException::what() const throw()
 {
     return (_error);
+}
+
+void Form::execute(const Bureaucrat& executor) const
+{
+    if (_is_signed)
+    {
+        throw std::runtime_error("Form is not signed... cannot execute.");
+    }
+    if (_grade_required_to_execute < executor.getGrade())
+    {
+        throw std::runtime_error("Grade is too low... cannot execute.");
+    }
+    action();
 }
 
 Form::~Form()

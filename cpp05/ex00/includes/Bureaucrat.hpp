@@ -33,8 +33,8 @@ class Bureaucrat
     };
 
 	Bureaucrat();
-	Bureaucrat(const std::string name);
-	Bureaucrat(int grade);
+	explicit Bureaucrat(const std::string name);
+	explicit Bureaucrat(int grade);
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(const Bureaucrat &other);
 	Bureaucrat &operator=(const Bureaucrat &other);

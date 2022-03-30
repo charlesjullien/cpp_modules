@@ -36,8 +36,8 @@ class Bureaucrat
     };
 
 	Bureaucrat();
-	Bureaucrat(const std::string name);
-	Bureaucrat(int grade);
+	explicit Bureaucrat(const std::string name);
+	explicit Bureaucrat(int grade);
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(const Bureaucrat &other);
 	Bureaucrat &operator=(const Bureaucrat &other);
@@ -48,6 +48,8 @@ class Bureaucrat
 	void rise_grade();
 	void lower_grade();
 	void signForm(Form &form);
+
+	void executeForm(const Form &form);//ajouté par rapport au 01
 
 	
 	private:

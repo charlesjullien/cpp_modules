@@ -116,6 +116,21 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
     return (_error);
 }
 
+void Bureaucrat::executeForm(const Form& form)
+{
+    try
+    {
+        form.execute(*this);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << _name << " cannot execute " << form.getName() << ". Because : " << e.what() << std::endl;
+        return ;
+    }
+    std::cout << _name << " executs " << form.getName() << std::endl;
+}
+
+
 Bureaucrat::~Bureaucrat()
 {
 	

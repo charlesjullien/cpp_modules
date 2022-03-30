@@ -35,7 +35,7 @@ class Form
     };
 
 	Form();
-	Form(const std::string name);
+	explicit Form(const std::string name);
 	Form(int grade_required_to_sign, int grade_required_to_execute);
 	Form(std::string name, int grade_required_to_sign, int grade_required_to_execute);
 	Form(const Form &other);
