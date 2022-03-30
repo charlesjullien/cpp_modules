@@ -1,28 +1,17 @@
 #include "../includes/Form.hpp"
 
-Form::Form()
+Form::Form() : _name("Unknown"), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false)
 {
-	_name = "Unknown";
-	_grade_required_to_execute = 150;
-	_grade_required_to_sign = 150;
-	_is_signed = false;
+
 }
 
-Form::Form(std::string name)
+Form::Form(std::string name) : _name(name), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false)
 {
-	_name = name;
-	_grade_required_to_execute = 150;
-	_grade_required_to_sign = 150;
-	_is_signed = false;
+	
 }
 
-Form::Form(int grade_required_to_sign, int grade_required_to_execute)
+Form::Form(int grade_required_to_sign, int grade_required_to_execute) : _name("Unknown"), _grade_required_to_execute(grade_required_to_execute), _grade_required_to_sign(grade_required_to_sign), _is_signed(false)
 {
-	_name = "Unknown";
-	_grade_required_to_execute = grade_required_to_execute;
-	_grade_required_to_sign = grade_required_to_sign;
-	_is_signed = false;
-
 	if (grade_required_to_sign > 150 || grade_required_to_execute > 150)
 	{
 		throw GradeTooLowException("Constructor exception : grade is too low... (beyond 150)");
@@ -33,13 +22,8 @@ Form::Form(int grade_required_to_sign, int grade_required_to_execute)
 	}
 }
 
-Form::Form(std::string name,int grade_required_to_sign, int grade_required_to_execute)
+Form::Form(std::string name, int grade_required_to_sign, int grade_required_to_execute) : _name(name), _grade_required_to_execute(grade_required_to_execute), _grade_required_to_sign(grade_required_to_sign), _is_signed(false)
 {
-	_name = name;
-	_grade_required_to_execute = grade_required_to_execute;
-	_grade_required_to_sign = grade_required_to_sign;
-	_is_signed = false;
-
 	if (grade_required_to_sign > 150 || grade_required_to_execute > 150)
 	{
 		throw GradeTooLowException("Constructor exception : grade is too low... (beyond 150)");
@@ -50,12 +34,8 @@ Form::Form(std::string name,int grade_required_to_sign, int grade_required_to_ex
 	}
 }
 
-Form::Form(const Form &other)
+Form::Form(const Form &other) : _name(other.getName()), _grade_required_to_execute(other.get_grade_required_to_execute()), _grade_required_to_sign(other.get_grade_required_to_sign()), _is_signed(false)
 {
-	_name = other.getName();
-	_grade_required_to_execute = other.get_grade_required_to_execute();
-	_grade_required_to_sign = other.get_grade_required_to_sign();
-	_is_signed = false;
 	*this = other;
 }
 
@@ -64,7 +44,6 @@ Form &Form::operator=(const Form &other)
 	_grade_required_to_execute = other.get_grade_required_to_execute();
 	_grade_required_to_sign = other.get_grade_required_to_sign();
 	_is_signed = other.get_is_signed();
-	_name = other.getName();
 	return (*this);
 }
 
@@ -75,19 +54,42 @@ const std::string& Form::getName() const
 
 bool Form::get_is_signed() const
 {
-	
+	return (_is_signed);
+}
+
+int Form::get_grade_required_to_sign() const
+{
+	return (_grade_required_to_sign);
+}
+
+int Form::get_grade_required_to_execute() const
+{
+	return (_grade_required_to_execute);
+}
+
+void Form::BeSigned(Bureaucrat &b)
+{
+	if (_is_signed)
+    {
+        return ;
+    }
+    if (b.getGrade() > _grade_required_to_sign) // > car + le grade est élévé, plus il est bas dans la hiérarchie
+    {
+        throw GradeTooLowException("Bureaucrat cannot sign as his grade is no sufficient (BeSigned exception)");
+    }
+    _is_signed = true;
 }
 
 
 std::ostream& operator<<(std::ostream& os, const Form &a)
 {
-    os << a.getName() << ", Form grade " << a.getGrade();
+    os << "name = " << a.getName() << "\nSigned state = " << a.get_is_signed() << "\nGrade required to sign = "<< a.get_grade_required_to_sign() << "\nGrade required to execute = "<< a.get_grade_required_to_execute() << std::endl;
     return (os);
 }
 
-Form::GradeTooHighException::GradeTooHighException(const char *error)
+Form::GradeTooHighException::GradeTooHighException(const char *error) : _error(error)
 {
-	_error = error;
+
 }
 
 const char* Form::GradeTooHighException::what() const throw()
@@ -95,9 +97,9 @@ const char* Form::GradeTooHighException::what() const throw()
     return (_error);
 }
 
-Form::GradeTooLowException::GradeTooLowException(const char *error)
+Form::GradeTooLowException::GradeTooLowException(const char *error) : _error(error)
 {
-	_error = error;
+
 }
 
 const char* Form::GradeTooLowException::what() const throw()

@@ -73,9 +73,21 @@ void Bureaucrat::lower_grade()
 	_grade = _grade + 1;
 }
 
-void Bureaucrat::signForm(Form &form) const
+void Bureaucrat::signForm(Form &form)
 {
-	
+	if (form.get_is_signed() == true)
+	{
+		std::cout << _name << " cannot sign because form has already been signed." << std::endl;
+	}
+	if (form.get_grade_required_to_sign() < _grade)
+	{
+		std::cout << _name << " cannot sign because his grade is too low." << std::endl;
+	}
+	else
+	{
+		std::cout << _name << " signs " << form.getName() << std::endl;
+		form.BeSigned(*this);
+	}
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat &a)

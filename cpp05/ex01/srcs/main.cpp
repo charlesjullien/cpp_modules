@@ -3,6 +3,7 @@
 int main(int ac, char **av)
 {
     Bureaucrat Asselineau("Asselineau", 9);
+    Bureaucrat Pecresse("Pecresse", 140);
     Asselineau.rise_grade();
     std::cout << "increment: " << Asselineau << std::endl;
     Asselineau.lower_grade();
@@ -43,5 +44,24 @@ int main(int ac, char **av)
     {
         std::cerr << e.what() << std::endl;
     }
+
+    //
+
+    Form A1("A1", 19, 25);
+    Form A2(48, 48);
+    Form A3;
+
+    std::cout << Asselineau << std::endl;
+    std::cout << Pecresse << std::endl;
+    std::cout << A1 << std::endl;
+    std::cout << A2 << std::endl;
+    std::cout << A3 << std::endl;
+
+    Asselineau.signForm(A1);
+    A2.BeSigned(Pecresse);
+    Pecresse.signForm(A3);
+    Pecresse.signForm(A2);
+
+
 	return (0);	
 }
