@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "Form.hpp"
 
 
@@ -15,6 +16,9 @@ class ShrubberyCreationForm : public Form
 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 	~ShrubberyCreationForm();
 
+	explicit ShrubberyCreationForm(const std::string& target);
+	virtual void action() const;
+	
 	private:
 
 	

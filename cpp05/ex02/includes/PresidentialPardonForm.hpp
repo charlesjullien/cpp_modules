@@ -14,8 +14,12 @@ class PresidentialPardonForm : public Form
 	PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
 	~PresidentialPardonForm();
 
+	explicit PresidentialPardonForm(const std::string& target);
+	virtual void action() const; //ou private ?
+
 	private:
 
+	
 
 };
 

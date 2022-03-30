@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 #include "Form.hpp"
 
 
@@ -14,6 +16,9 @@ class RobotomyRequestForm : public Form
 	RobotomyRequestForm(const RobotomyRequestForm &other);
 	RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
 	~RobotomyRequestForm();
+
+	explicit RobotomyRequestForm(const std::string& target);
+	virtual void action() const;
 
 	private:
 

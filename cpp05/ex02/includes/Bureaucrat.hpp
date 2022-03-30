@@ -20,7 +20,7 @@ class Bureaucrat
 
     public:
         explicit GradeTooHighException(const char *error);
-        const char* what() const throw();
+        virtual const char* what() const throw();
     };
 
 
@@ -32,7 +32,7 @@ class Bureaucrat
 
     public:
         explicit GradeTooLowException(const char *error);
-        const char* what() const throw();
+        virtual const char* what() const throw();
     };
 
 	Bureaucrat();

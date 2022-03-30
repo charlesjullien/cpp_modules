@@ -35,9 +35,10 @@ class Form
     };
 
 	Form();
-	Form(const std::string name);
+	explicit Form(const std::string name);//mis en explicit par rapport au 01
 	Form(int grade_required_to_sign, int grade_required_to_execute);
-	Form(std::string name, int grade_required_to_sign, int grade_required_to_execute);
+	Form(const std::string name, int grade_required_to_sign, int grade_required_to_execute);
+	Form(const std::string name, int grade_required_to_sign, int grade_required_to_execute, const std::string target);
 	Form(const Form &other);
 	Form &operator=(const Form &other);
 	~Form();
@@ -48,6 +49,9 @@ class Form
 	const std::string& getName() const;
 	
 	void BeSigned(Bureaucrat &b);
+
+	const std::string& get_target() const;//ajouté par rapport au 01
+	void execute(const Bureaucrat& executor) const;//ajouté par rapport au 01
 	
 	private:
 
@@ -55,6 +59,9 @@ class Form
 	const int _grade_required_to_sign;
 	const int _grade_required_to_execute;
 	bool _is_signed;
+
+	const std::string _target;//ajouté par rapport au 01
+	
 	
 };
 
