@@ -1,88 +1,109 @@
 #include "../includes/Bureaucrat.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
 
 int main(int ac, char **av)
 {
-    Bureaucrat Asselineau("Asselineau", 9);
-    Bureaucrat Pecresse("Pecresse", 140);
-    Asselineau.rise_grade();
-    std::cout << "increment: " << Asselineau << std::endl;
-    Asselineau.lower_grade();
-    std::cout << "decrement: " << Asselineau << std::endl;
+    /*Bureaucrat chef("chef", 1);
+    PresidentialPardonForm bandit("bandit");
 
-    std::cout << std::endl;
-    try
+    chef.signForm(bandit);
+    chef.executeForm(bandit);*/
+
+    std::srand(std::time(NULL));
     {
-        Bureaucrat Castex(-1);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    try
-    {
-        Bureaucrat Veran(151);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    try
-    {
-        Bureaucrat Macron(149);
-        Macron.rise_grade();
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    try
-    {
-        Bureaucrat Sarko(150);
-        Sarko.lower_grade();
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
+        PresidentialPardonForm pre("tag");
+        Bureaucrat bru("bru", 1);
+
+        bru.signForm(pre);
+        bru.executeForm(pre);
+        std::cout << bru << std::endl;
+        std::cout << pre << std::endl;
     }
 
-    //
+    std::cout << "------------" << std::endl;
 
-    Form A1("A1", 19, 25);
-    Form A2(48, 48);
-    Form A3;
-
-    std::cout << Asselineau << std::endl;
-    std::cout << Pecresse << std::endl;
-    std::cout << A1 << std::endl;
-    std::cout << A2 << std::endl;
-    std::cout << A3 << std::endl;
-
-
-    try 
     {
-        Asselineau.signForm(A1);
-    }
-    catch (std::exception &e) 
-    {
-        std::cout << "Exception caught: "<< e.what() << std::endl;
+        PresidentialPardonForm pre("tag");
+        Bureaucrat bru("bru", 10);
+
+        bru.signForm(pre);
+        bru.executeForm(pre);
+        std::cout << bru << std::endl;
+        std::cout << pre << std::endl;
     }
 
-    try 
+    std::cout << "------------" << std::endl;
+
     {
-        Pecresse.signForm(A2);
-    }
-    catch (std::exception &e) 
-    {
-        std::cout << "Exception caught: "<< e.what() << std::endl;
+        PresidentialPardonForm pre("tag");
+        Bureaucrat bru("bru", 1);
+
+        pre.BeSigned(bru);
+        pre.execute(bru);
+        std::cout << bru << std::endl;
+        std::cout << pre << std::endl;
     }
 
-    try 
+    std::cout << "------------" << std::endl;
+
     {
-        Pecresse.signForm(A3);
+        PresidentialPardonForm pre("tag");
+        Bureaucrat bru("bru", 1);
+
+        bru.executeForm(pre);
+        std::cout << bru << std::endl;
+        std::cout << pre << std::endl;
     }
-    catch (std::exception &e) 
+
+    std::cout << "------------" << std::endl;
+
     {
-        std::cout << "Exception caught: "<< e.what() << std::endl;
+        RobotomyRequestForm rob("tag");
+        Bureaucrat bru("bru", 1);
+
+        bru.signForm(rob);
+        bru.executeForm(rob);
+        std::cout << bru << std::endl;
+        std::cout << rob << std::endl;
     }
+
+    std::cout << "------------" << std::endl;
+
+    {
+        RobotomyRequestForm rob("tag");
+        Bureaucrat bru("bru", 1);
+
+        bru.signForm(rob);
+        bru.executeForm(rob);
+        std::cout << bru << std::endl;
+        std::cout << rob << std::endl;
+    }
+
+    std::cout << "------------" << std::endl;
+
+    {
+        RobotomyRequestForm rob("tag");
+        Bureaucrat bru("bru", 1);
+
+        bru.signForm(rob);
+        bru.executeForm(rob);
+        std::cout << bru << std::endl;
+        std::cout << rob << std::endl;
+    }
+
+    std::cout << "------------" << std::endl;
+
+    {
+        ShrubberyCreationForm shr("tag");
+        Bureaucrat bru("bru", 1);
+
+        bru.signForm(shr);
+        bru.executeForm(shr);
+        std::cout << bru << std::endl;
+        std::cout << shr << std::endl;
+    }
+
 	return (0);	
 }

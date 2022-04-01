@@ -2,7 +2,7 @@
 
 Form::Form() : _name("Unknown"), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false), _target("Unnamed target")
 {
-
+	
 }
 
 Form::Form(const std::string name) : _name(name), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false), _target("Unnamed target")

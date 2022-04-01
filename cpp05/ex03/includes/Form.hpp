@@ -41,7 +41,7 @@ class Form
 	Form(const std::string name, int grade_required_to_sign, int grade_required_to_execute, const std::string target);
 	Form(const Form &other);
 	Form &operator=(const Form &other);
-	~Form();
+	virtual ~Form();
 
 	int get_grade_required_to_execute() const;
 	int get_grade_required_to_sign() const;
@@ -60,6 +60,7 @@ class Form
 	const int _grade_required_to_sign;
 	const int _grade_required_to_execute;
 	bool _is_signed;
+
 	virtual void action() const = 0;
 
 

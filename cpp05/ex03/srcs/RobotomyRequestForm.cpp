@@ -2,7 +2,7 @@
 
 RobotomyRequestForm::RobotomyRequestForm(): Form("RobotomyRequest", 72, 45)
 {
-
+    
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target): Form("RobotomyRequest", 72, 45, target)

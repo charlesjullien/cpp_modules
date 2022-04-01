@@ -16,6 +16,7 @@ class PresidentialPardonForm : public Form
 
 	explicit PresidentialPardonForm(const std::string target);
 
+
 	private:
 
 	virtual void action() const;

@@ -17,6 +17,7 @@ class ShrubberyCreationForm : public Form
 	~ShrubberyCreationForm();
 
 	explicit ShrubberyCreationForm(const std::string target);
+
 	
 	private:
 

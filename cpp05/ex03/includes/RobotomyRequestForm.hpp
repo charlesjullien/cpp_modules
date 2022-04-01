@@ -19,6 +19,7 @@ class RobotomyRequestForm : public Form
 
 	explicit RobotomyRequestForm(const std::string target);
 
+
 	private:
 
 	virtual void action() const;
