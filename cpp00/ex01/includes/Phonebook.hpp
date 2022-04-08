@@ -17,10 +17,13 @@ class Phonebook
 	bool phonebook_full(void);
 	void new_contact(Contact *n);
 
+	~Phonebook();
+
 	private :
 
 	int m_sum_contact;
 	Contact contact[8];
+	int _oldest;
 };
 
 void print_info(std::string str);

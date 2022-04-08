@@ -1,9 +1,10 @@
 #include "../includes/Phonebook.hpp"
 #include "../includes/Contact.hpp"
 
-Phonebook::Phonebook() : m_sum_contact(0)
+Phonebook::Phonebook()
 {
-
+	 m_sum_contact = 0;
+	 _oldest = 0;
 }
 
 bool Phonebook::phonebook_full(void)
@@ -48,6 +49,13 @@ void Phonebook::new_contact(Contact *n)
 		contact[m_sum_contact] = *n;
 		m_sum_contact++;
 	}
+	else
+	{
+		contact[_oldest] = *n;
+		_oldest++;
+		if (_oldest == 8)
+			_oldest = 0;
+	}
 }
 
 void Phonebook::search_contact(void)
@@ -70,13 +78,22 @@ void Phonebook::add_contact(void)
 {
 	Contact n;
 
-	if (this->phonebook_full())
+	// if (this->phonebook_full())
+	// {
+	// 	std::cout << "PHONEBOOK IS FULL...Replacing oldest one by current." << std::endl;
+	// 	return ;
+	// }
+	if (m_sum_contact == 8)
 	{
-		std::cout << "PHONEBOOK IS FULL... Can't add any contact..." << std::endl;
-		return ;
+		std::cout << "Phonebook is full... replacing oldest contact with new one" << std::endl;
 	}
 	std::cout << "Please fill the following informations to complete contact creation :" << std::endl;
 	n.ask_data();
 	this->new_contact(&n);
 	std::cout << contact[m_sum_contact - 1].first_name() << " added." << std::endl;
+}
+
+Phonebook::~Phonebook()
+{
+	
 }
