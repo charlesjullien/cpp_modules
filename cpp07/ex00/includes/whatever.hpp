@@ -21,7 +21,7 @@ T min(T t1, T t2)
 	return t2;
 }
 
-template<class T>
+template<typename T>
 T max(T t1, T t2)
 {
 	if (t1 > t2)
