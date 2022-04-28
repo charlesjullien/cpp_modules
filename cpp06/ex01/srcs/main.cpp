@@ -10,7 +10,7 @@ Data* deserialize(uintptr_t raw)
 	return (reinterpret_cast<Data*>(raw));
 }
 
-int main (int ac, char **av)
+int main ()
 {
 	Data *ptr = new Data;
 	ptr->lol = "Hello World!";

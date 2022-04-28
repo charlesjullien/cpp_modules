@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdint.h>
 
 typedef struct s_Data	Data;
 struct			s_Data

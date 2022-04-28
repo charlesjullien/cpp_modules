@@ -7,7 +7,7 @@ Atoicfd::Atoicfd()
 
 bool Atoicfd::check_int(std::string a)
 {
-	int i = 0;
+	unsigned int i = 0;
 
 	if (a[0] == '+' || a[0] == '-')
 		i++;
@@ -22,7 +22,7 @@ bool Atoicfd::check_int(std::string a)
 
 bool Atoicfd::check_double(std::string a)
 {
-	int i = 0;
+	unsigned int i = 0;
 	int point = 0;
 
 	if (a[0] == '+' || a[0] == '-')
@@ -56,7 +56,7 @@ bool Atoicfd::check_double_infnan(std::string a)
 
 bool Atoicfd::check_float(std::string a)
 {
-	int i = 0;
+	unsigned int i = 0;
 	int point = 0;
 
 	if (a[_a_len - 1] != 'f')
@@ -95,27 +95,27 @@ bool Atoicfd::convertible(std::string a)
 	if (_a_len == 1 && !isdigit(a[0]))// == check_char();
 	{
 		_c = a[0];
-		_i = static_cast<long>(_c);
+		_i = static_cast<long>(_c);// on met long sinon ca bug
 		_d = static_cast<double>(_c);
 		_f = static_cast<float>(_c);
 	}
 	else if (check_int(a) == true)
 	{
-		_i = std::stol(a);
+		_i = std::atoi(a.c_str());// atoi, mais peut etre atol ???
 		_c = static_cast<char>(_i);
 		_d = static_cast<double>(_i);
 		_f = static_cast<float>(_i);
 	}
 	else if (check_double(a) == true || check_double_infnan(a) == true)
 	{
-		_d = std::stod(a);
+		_d = std::atof(a.c_str());// marche pas
 		_c = static_cast<char>(_d);
 		_i = static_cast<long>(_d);
 		_f = static_cast<float>(_d);
 	}
 	else if (check_float(a) == true || check_float_inffnanf(a) == true)
 	{
-		_f = std::stof(a);
+		_f = std::atof(a.c_str()); //bancal aussi je crois
 		_c = static_cast<char>(_f);
 		_i = static_cast<long>(_f);
 		_d = static_cast<double>(_f);
@@ -125,7 +125,7 @@ bool Atoicfd::convertible(std::string a)
 	return (true);
 }
 
-Atoicfd::Atoicfd(std::string a)
+Atoicfd::Atoicfd(std::string a)//on commence la
 {
 	_a = a;
 	_a_len = a.length();
@@ -163,6 +163,7 @@ Atoicfd::Atoicfd(const Atoicfd &other)
 
 Atoicfd &Atoicfd::operator=(const Atoicfd &other)
 {
+	(void)other;
 	return (*this);
 }
 
@@ -170,4 +171,3 @@ Atoicfd::~Atoicfd()
 {
 
 }
-

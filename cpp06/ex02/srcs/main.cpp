@@ -1,7 +1,8 @@
 #include "../includes/type_info.hpp"
 
-int main(int ac, char **av)
+int main()
 {
+	std::srand(std::time(NULL));
 	Base *base = generate();
 	identify(base);
 	identify(*base);

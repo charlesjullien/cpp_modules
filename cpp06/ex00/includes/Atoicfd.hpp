@@ -5,6 +5,10 @@
 #include <string>
 #include <climits>
 #include <iomanip>
+#include <cmath>
+#include <algorithm>
+#include <iomanip>
+#include <cstdlib>
 
 class Atoicfd
 {
