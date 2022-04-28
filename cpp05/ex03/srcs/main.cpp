@@ -17,9 +17,10 @@ int main()
     try
     {
         rob = someRandomIntern.makeForm("robotomy request", "Jean-Jacques");
+        //rob = someRandomIntern.makeForm("FAKE", "Jean-Jacques");    ==> throws an exception... FAKE doesnt exist.
         Mario.signForm(*rob);
         Mario.executeForm(*rob);//nothing happens (action is abstract in Form)
-        //rob->action();//nothing happens (action is private in Form) ==> + non virtual and pub in Z
+        //rob->action();//nothing happens (action is private in Form) ==> + non virtual and pub
         std::cout << std::endl;
         presid = someRandomIntern.makeForm("presidential pardon", "Guy-Francis");
         Toad.signForm(*presid);
