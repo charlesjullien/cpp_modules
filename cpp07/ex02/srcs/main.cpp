@@ -1,5 +1,6 @@
 #include "../includes/Array.hpp"
 #define SIZE 10
+
 int main()
 {
     int i;
@@ -10,7 +11,7 @@ int main()
 
     int *other_tab = new int[SIZE];
 
-    std::srand(std::time(nullptr));
+    std::srand(std::time(NULL));
 
     while (i < SIZE)
     {

@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 
 template <class T>
 class Array
@@ -20,11 +22,29 @@ class Array
 	Array<T> &operator=(const Array &other);
 	~Array();
 
-	T &operator[](unsigned int index);
-	unsigned int size()
+	//        operator[] classique
+	T &operator[](unsigned int index)
+	{
+    if (index >= this->n || index < 0)
+        throw std::exception();
+    return (array[index]);
+	}
+	//*********************************
+
+	//        operator[] en const
+	T const &operator[](unsigned int index) const
+	{
+    if (index >= this->n || index < 0)
+        throw std::exception();
+    return (array[index]);
+	}
+	//*********************************
+	
+	unsigned int size() const
 	{
 		return (this->n);
 	}
+
 
 };
 
@@ -32,22 +52,18 @@ template <class T>
 Array<T>::Array()
 {
     n = 0;
-    this->array = new T[0];
+    this->array = NULL;;
 }
 
 template <class T>
 Array<T>::Array(unsigned int n_)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	n = n_;
-    this->array = new T[n_];
-	while (i < n_)
-	{
-		this->array[i] = 0;
-		i++;
-	}
+	array = NULL;
+    this->array = new T[n_]();
 }
 
 template <class T>
@@ -59,7 +75,7 @@ Array<T>::Array(const Array &other)
 template <class T>
 Array<T> &Array<T>::operator=(const Array &other)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
     this->n = other.n;
@@ -73,17 +89,9 @@ Array<T> &Array<T>::operator=(const Array &other)
 }
 
 template <class T>
-T &Array<T>::operator[](unsigned int index)
-{
-    if (index >= this->n || index < 0)
-        throw std::exception();
-    return (array[index]);
-}
-
-template <class T>
 Array<T>::~Array()
 {
-
+	delete[] this->array;
 }
 
 #endif

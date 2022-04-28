@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 
+
 template <typename T>
 void print(T element)
 {
@@ -13,7 +14,7 @@ void print(T element)
 template <typename T>
 void iter(T *tab, unsigned int size, void (function)(T))
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (i < size)
