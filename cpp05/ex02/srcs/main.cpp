@@ -3,7 +3,7 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
 
-int main(int ac, char **av)
+int main()
 {
     /*Bureaucrat chef("chef", 1);
     PresidentialPardonForm bandit("bandit");
@@ -13,95 +13,95 @@ int main(int ac, char **av)
 
     std::srand(std::time(NULL));
     {
-        PresidentialPardonForm pre("tag");
-        Bureaucrat bru("bru", 1);
+        PresidentialPardonForm pre("xyz");
+        Bureaucrat mec("mec", 1);
 
-        bru.signForm(pre);
-        bru.executeForm(pre);
-        std::cout << bru << std::endl;
+        mec.signForm(pre);
+        mec.executeForm(pre);
+        std::cout << mec << std::endl;
         std::cout << pre << std::endl;
     }
 
-    std::cout << "------------" << std::endl;
+    std::cout << "|------------|" << std::endl;
 
     {
-        PresidentialPardonForm pre("tag");
-        Bureaucrat bru("bru", 10);
+        PresidentialPardonForm pre("xyz");
+        Bureaucrat mec("mec", 10);
 
-        bru.signForm(pre);
-        bru.executeForm(pre);
-        std::cout << bru << std::endl;
+        mec.signForm(pre);
+        mec.executeForm(pre);
+        std::cout << mec << std::endl;
         std::cout << pre << std::endl;
     }
 
-    std::cout << "------------" << std::endl;
+    std::cout << "|------------|" << std::endl;
 
     {
-        PresidentialPardonForm pre("tag");
-        Bureaucrat bru("bru", 1);
+        PresidentialPardonForm pre("xyz");
+        Bureaucrat mec("mec", 1);
 
-        pre.BeSigned(bru);
-        pre.execute(bru);
-        std::cout << bru << std::endl;
+        pre.BeSigned(mec);
+        pre.execute(mec);
+        std::cout << mec << std::endl;
         std::cout << pre << std::endl;
     }
 
-    std::cout << "------------" << std::endl;
+    std::cout << "|------------|" << std::endl;
 
     {
-        PresidentialPardonForm pre("tag");
-        Bureaucrat bru("bru", 1);
+        PresidentialPardonForm pre("xyz");
+        Bureaucrat mec("mec", 1);
 
-        bru.executeForm(pre);
-        std::cout << bru << std::endl;
+        mec.executeForm(pre);
+        std::cout << mec << std::endl;
         std::cout << pre << std::endl;
     }
 
-    std::cout << "------------" << std::endl;
+    std::cout << "|------------|" << std::endl;
 
     {
-        RobotomyRequestForm rob("tag");
-        Bureaucrat bru("bru", 1);
+        RobotomyRequestForm rob("xyz");
+        Bureaucrat mec("mec", 1);
 
-        bru.signForm(rob);
-        bru.executeForm(rob);
-        std::cout << bru << std::endl;
+        mec.signForm(rob);
+        mec.executeForm(rob);
+        std::cout << mec << std::endl;
         std::cout << rob << std::endl;
     }
 
-    std::cout << "------------" << std::endl;
+    std::cout << "|------------|" << std::endl;
 
     {
-        RobotomyRequestForm rob("tag");
-        Bureaucrat bru("bru", 1);
+        RobotomyRequestForm rob("xyz");
+        Bureaucrat mec("mec", 1);
 
-        bru.signForm(rob);
-        bru.executeForm(rob);
-        std::cout << bru << std::endl;
+        mec.signForm(rob);
+        mec.executeForm(rob);
+        std::cout << mec << std::endl;
         std::cout << rob << std::endl;
     }
 
-    std::cout << "------------" << std::endl;
+    std::cout << "|------------|" << std::endl;
 
     {
-        RobotomyRequestForm rob("tag");
-        Bureaucrat bru("bru", 1);
+        RobotomyRequestForm rob("xyz");
+        Bureaucrat mec("mec", 1);
 
-        bru.signForm(rob);
-        bru.executeForm(rob);
-        std::cout << bru << std::endl;
+        mec.signForm(rob);
+        mec.executeForm(rob);
+        std::cout << mec << std::endl;
         std::cout << rob << std::endl;
     }
 
-    std::cout << "------------" << std::endl;
+    std::cout << "|------------|" << std::endl;
 
     {
-        ShrubberyCreationForm shr("tag");
-        Bureaucrat bru("bru", 1);
+        ShrubberyCreationForm shr("xyz");
+        Bureaucrat mec("mec", 1);
 
-        bru.signForm(shr);
-        bru.executeForm(shr);
-        std::cout << bru << std::endl;
+        mec.signForm(shr);
+        mec.executeForm(shr);
+        std::cout << mec << std::endl;
         std::cout << shr << std::endl;
     }
 

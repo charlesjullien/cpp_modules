@@ -12,6 +12,7 @@ Intern::Intern(const Intern &other)
 
 Intern &Intern::operator=(const Intern &other)
 {
+	(void)other;
 	return (*this);
 }
 
@@ -33,6 +34,7 @@ Form    *Intern::Presidential(std::string const &target) const
 Form    *Intern::makeForm(std::string form, std::string target)
 {
 	int i = 0;
+	int j;
 	std::string request[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	Form *forms[3] = {Intern::Shrubbery(target), Intern::Robotomy(target), Intern::Presidential(target)};
     
@@ -41,12 +43,19 @@ Form    *Intern::makeForm(std::string form, std::string target)
 		if (request[i] == form)
         {
             std::cout << "Intern creates " << form << std::endl;
+			j = 0;
+			while (j < 3)
+			{
+				if (j != i)
+					delete forms[j];
+				j++;
+			}
             return (forms[i]);
 		}
 		i++;
 	}
     throw Error();
-	return nullptr;
+	return NULL;
 }
 
 const char *Intern::Error::what() const throw()

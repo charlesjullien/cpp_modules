@@ -1,27 +1,29 @@
-NAME        = intern
+NAME	:= intern
 
-SRCS        = srcs/main.cpp srcs/Bureaucrat.cpp srcs/Form.cpp srcs/ShrubberyCreationForm.cpp srcs/RobotomyRequestForm.cpp srcs/PresidentialPardonForm.cpp srcs/Intern.cpp
+SRCS	:= srcs/main.cpp srcs/Bureaucrat.cpp srcs/Form.cpp srcs/ShrubberyCreationForm.cpp srcs/RobotomyRequestForm.cpp srcs/PresidentialPardonForm.cpp srcs/Intern.cpp
 
-OBJS        = ${SRCS:.cpp=.o}
+CC		:= c++
 
-RM          = rm -f
+FLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-CFLAGS      = -Wall -Wextra -Werror -std=c++98
+RM		:= rm -rf
 
-COMPILER    = clang++
+OBJS	:= $(SRCS:.cpp=.o)
 
-${NAME}: ${OBJS}
-		${COMPILER} ${FLAGS} ${OBJS} -o ${NAME}
+%.o: %.cpp
+		$(CC) $(FLAGS) -c $< -o $@
 
-all :   ${NAME}
+all: $(NAME)
+
+$(NAME): $(OBJS)
+		$(CC) $(FLAGS) $^ -o $(NAME)
 
 clean:
-		${RM} ${OBJS}
+		$(RM) $(OBJS)
 
 fclean: clean
-		${RM} ${NAME}
+		$(RM) $(NAME)
 
-re:        fclean all
+re: fclean all
 
-.PHONY: all clean fclean re
-
+.PHONY	: all re clean fclean

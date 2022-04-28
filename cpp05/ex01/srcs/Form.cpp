@@ -1,16 +1,16 @@
 #include "../includes/Form.hpp"
 
-Form::Form() : _name("Unknown"), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false)
+Form::Form() : _name("Unknown"), _grade_required_to_sign(150), _grade_required_to_execute(150), _is_signed(false)
 {
 
 }
 
-Form::Form(std::string name) : _name(name), _grade_required_to_execute(150), _grade_required_to_sign(150), _is_signed(false)
+Form::Form(std::string name) : _name(name), _grade_required_to_sign(150), _grade_required_to_execute(150), _is_signed(false)
 {
 	
 }
 
-Form::Form(int grade_required_to_sign, int grade_required_to_execute) : _name("Unknown"), _grade_required_to_execute(grade_required_to_execute), _grade_required_to_sign(grade_required_to_sign), _is_signed(false)
+Form::Form(int grade_required_to_sign, int grade_required_to_execute) : _name("Unknown"), _grade_required_to_sign(grade_required_to_sign), _grade_required_to_execute(grade_required_to_execute), _is_signed(false)
 {
 	if (grade_required_to_sign > 150 || grade_required_to_execute > 150)
 	{
@@ -22,7 +22,7 @@ Form::Form(int grade_required_to_sign, int grade_required_to_execute) : _name("U
 	}
 }
 
-Form::Form(std::string name, int grade_required_to_sign, int grade_required_to_execute) : _name(name), _grade_required_to_execute(grade_required_to_execute), _grade_required_to_sign(grade_required_to_sign), _is_signed(false)
+Form::Form(std::string name, int grade_required_to_sign, int grade_required_to_execute) : _name(name), _grade_required_to_sign(grade_required_to_sign), _grade_required_to_execute(grade_required_to_execute),  _is_signed(false)
 {
 	if (grade_required_to_sign > 150 || grade_required_to_execute > 150)
 	{
@@ -34,7 +34,7 @@ Form::Form(std::string name, int grade_required_to_sign, int grade_required_to_e
 	}
 }
 
-Form::Form(const Form &other) : _name(other.getName()), _grade_required_to_execute(other.get_grade_required_to_execute()), _grade_required_to_sign(other.get_grade_required_to_sign()), _is_signed(false)
+Form::Form(const Form &other) : _name(other.getName()), _grade_required_to_sign(other.get_grade_required_to_sign()), _grade_required_to_execute(other.get_grade_required_to_execute()), _is_signed(false)
 {
 	*this = other;
 }

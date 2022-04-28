@@ -57,8 +57,8 @@ class Form
 	private:
 
 	const std::string _name;
-	const int _grade_required_to_sign;
 	const int _grade_required_to_execute;
+	const int _grade_required_to_sign;
 	bool _is_signed;
 
 	virtual void action() const = 0;

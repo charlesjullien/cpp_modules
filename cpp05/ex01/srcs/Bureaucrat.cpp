@@ -120,4 +120,3 @@ Bureaucrat::~Bureaucrat()
 {
 	
 }
-

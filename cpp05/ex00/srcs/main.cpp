@@ -1,6 +1,6 @@
 #include "../includes/Bureaucrat.hpp"
 
-int main(int ac, char **av)
+int main()
 {
     Bureaucrat Asselineau("Asselineau", 9);
     Asselineau.rise_grade();

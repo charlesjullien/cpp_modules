@@ -17,6 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
+	(void)other;
 	return (*this);
 }
 
@@ -36,8 +37,12 @@ void ShrubberyCreationForm::action() const
 "                                , -=-~{ .-^- _                                    , -=-~{ .-^- _\n"
 "                                      `}                                                `}\n"
 "                                       {                                                 {";
-	
-	std::ofstream fichier(get_target() + "_shrubbery");
+
+
+	std::string shrub = get_target();
+	shrub.append("_shrubbery");
+	std::ofstream fichier;
+	fichier.open(shrub.c_str());
 	if (!fichier)
 	{
 		throw std::runtime_error("Cannot open file.");

@@ -4,7 +4,7 @@
 #include "../includes/PresidentialPardonForm.hpp"
 #include "../includes/Intern.hpp"
 
-int main(int ac, char **av)
+int main()
 {
     Intern someRandomIntern;
     Form *rob;

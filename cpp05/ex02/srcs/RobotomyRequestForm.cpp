@@ -17,6 +17,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
 {
+    (void)other;
 	return (*this);
 }
 
