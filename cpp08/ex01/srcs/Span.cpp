@@ -7,7 +7,7 @@ Span::Span()
 
 Span::Span(unsigned int n)
 {
-	N = n;
+	this->N = n;
 }
 
 Span::Span(const Span &other)
@@ -34,12 +34,26 @@ std::vector<int> Span::getTab()
 
 void Span::addNumber(int num)
 {
-	if (this->tab.size() < N)
+	if (this->tab.size() < this->N)
 	{
 		this->tab.push_back(num);
 	}
 	else
+	{
 		throw (outOfRange());
+	}
+}
+
+void Span::addNumber2(std::vector<int>::iterator iter_begin, std::vector<int>::iterator	iter_end)
+{
+	if (this->tab.size() < this->N)
+	{
+		this->tab.insert(this->tab.end(), iter_begin, iter_end);
+	}
+	else
+	{
+		throw (outOfRange());
+	}
 }
 
 int Span::shortestSpan()
@@ -48,13 +62,13 @@ int Span::shortestSpan()
 	int next;
 	int range;
 	std::vector<int> temp;
-	if (tab.size() <= 1)
+	if (this->tab.size() <= 1)
 	{
 		throw (outOfRange());
 		return (0);
 	}
 	temp = this->tab;
-    sort(temp.begin(), temp.end());
+    std::sort(temp.begin(), temp.end());
 	std::vector<int>::iterator	iter_begin;
 	iter_begin = temp.begin();
 	range = temp[1] - temp[0];
@@ -71,7 +85,7 @@ int Span::shortestSpan()
 
 int Span::longestSpan()
 {
-	if (tab.size() <= 1)
+	if (this->tab.size() <= 1)
 	{
 		throw (outOfRange());
 		return (0);
@@ -81,11 +95,6 @@ int Span::longestSpan()
     temp = this->tab;
     sort(temp.begin(), temp.end());
 	return (temp[temp.size() - 1] - temp[0]);
-}
-
-const char *Span::outOfRange::what() const throw()
-{
-	return ("Error : what you ask is out of range.");
 }
 
 Span::~Span()

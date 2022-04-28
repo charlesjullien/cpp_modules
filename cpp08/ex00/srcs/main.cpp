@@ -10,15 +10,15 @@ int main ()
 	n = 0;
 	while (i < 20)
 	{
-		digits.push_back(i + 57);
+		digits.push_back(i + 40);
 		i++;
 	}
 	try
 	{
-		n = 60;
-		easyfind(digits, n);
+		n = 50;
+		easyFind(digits, n);
 		n = 0;
-		easyfind(digits, n);
+		easyFind(digits, n);
 	}
 	catch(std::exception)
 	{

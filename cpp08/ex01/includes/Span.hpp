@@ -4,15 +4,24 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
+#include <cstdlib>
 #include <string>
-
+#include <stack>
+#include <list>
+#include <algorithm>
+#include <ctime>
 
 class Span
 {
 
 	class outOfRange : public std::exception
     {
-        virtual const char *what() const throw();
+		public :
+
+        virtual const char *what() const throw()
+		{
+			return ("Error : what you ask is out of range.");
+		}
     };
 
 	public : 
@@ -26,6 +35,7 @@ class Span
 	std::vector<int> getTab();
 
 	void addNumber(int num);
+	void addNumber2(std::vector<int>::iterator	iter_begin, std::vector<int>::iterator	iter_end);
 	int shortestSpan();
 	int longestSpan();
 
